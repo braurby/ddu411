@@ -1,0 +1,750 @@
+// MIXINS
+border-radius()
+  -webkit-border-radius arguments
+  -moz-border-radius arguments
+  border-radius arguments
+
+boxShadow(hLength, vLength="", blur="", spread="", rgba-color="", inst=false)
+  if hLength!=none
+    if inst
+      -webkit-box-shadow inset hLength vLength blur spread rgba-color
+      -moz-box-shadow inset hLength vLength blur spread rgba-color
+      box-shadow inset hLength vLength blur spread rgba-color
+    if inst==false
+      -webkit-box-shadow hLength vLength blur spread rgba-color
+      -moz-box-shadow  hLength vLength blur spread rgba-color
+      box-shadow hLength vLength blur spread rgba-color
+    else
+      -webkit-box-shadow none
+      -moz-box-shadow  none
+      box-shadow none
+
+// Media Mixins
+w-1400()
+  @media all and (min-width: 1399px)
+    {block}
+w-1280()
+  @media all and (min-width: 1279px)
+    {block}
+w-1200()
+  @media all and (min-width: 1199px)
+    {block}
+w-1100()
+  @media all and (min-width: 1099px)
+    {block}
+w-1024()
+  @media all and (min-width : 1023px)
+    {block}
+w-992()
+  @media all and (min-width : 991px)
+    {block}
+w-768()
+  @media all and (min-width : 767px)
+    {block}
+w-540()
+  @media all and (min-width : 539px)
+    {block}
+w-480()
+  @media all and (min-width : 479px)
+    {block}
+w-320()
+  @media all and (min-width : 319px)
+    {block}
+//  End Of Media Mixins
+
+// COLORS
+main_green  = #8dc63f
+main_orange = #f4c119
+main_blue = #13a3ee
+main_red = #eb6578
+
+light_blue = #66cbff
+light_gray = #eaeaea
+mid_gray = #e9ecef
+dark_blue = #212529
+gray_blue = #454a4c
+gray_blue_light = #a0aaae
+
+header_bg = light_blue
+strong_color = dark_blue
+main_text_color = gray_blue
+
+// Fonts
+body
+  color main_text_color
+h1, h2, h3, h4, h5, h6
+  font-family 'Roboto Slab', serif
+h2
+  font-size 1.5rem
+  +w-480()
+    font-size 2rem
+a
+  color main_blue 
+
+// Headings
+.text-heading
+  &-underline:after
+    content ('')
+    display block
+    width 200px
+    height 3px
+    margin 1.25rem auto 1.25rem auto
+
+.line-color
+  &-orange:after
+    background-color main_orange
+  &-red:after
+    background-color main_red
+  &-blue:after
+    background-color main_blue
+  &-green:after
+    background-color main_green
+
+// Button styles
+a.button
+  border-radius(5px)
+
+.button
+  &-color
+    color #fff
+    border none
+    &:hover
+      color #fff
+    &:focus, &:active
+      border-color none !important
+      outline-color none !important
+
+    &-orange
+      background-color main_orange
+      &:focus, &:active
+        box-shadow 0 0 0 .2rem rgba(main_orange,.25)
+    &-red
+      background-color main_red
+      &:focus, &:active
+        box-shadow 0 0 0 .2rem rgba(main_red,.25)
+
+
+.btn-lg
+  font-size 1rem
+  padding 0.75rem 1.25rem
+
+// Text styles
+.text
+  &-shadow
+    text-shadow 0 1px 1px rgba(0,0,0,.30)
+  &-centered
+    text-align center
+  &-strong
+    font-weight 700
+  &-color
+    &-white
+      color white !important
+    &-main_red
+      color main_red !important
+    &-main_green
+      color main_green !important
+    &-main_blue
+      color main_blue !important
+    &-main_orange
+      color main_orange !important
+
+.circle-icon
+  background-color main_orange
+  color #fff
+  border-radius 50px
+  padding 0.5rem
+
+// Blocks modificators
+.block
+  &-dark
+    color #fff
+    background-color gray_blue
+
+    a
+      color light_blue !important
+
+// Lists styles
+.list-dotted
+  margin-left 0
+  padding-left 0
+  li
+    list-style none
+    padding 10px 0
+    &:before
+      content ''
+      display inline-block
+      vertical-align baseline
+      height 10px
+      width 10px
+      margin-right 20px
+      border-radius(15px)
+  &-orange
+    li:before
+      background-color main_orange
+  &-red
+    li:before
+      background-color main_red
+  &-blue
+    li:before
+      background-color main_blue
+// HEADER
+.header
+  background-color #d7ebff
+  background-image url(../img/header-cloud-1.png), url(../img/header-cloud-2.png)
+  background-repeat no-repeat, no-repeat
+  background-position 20% 10px, 80% 30px
+  text-align center
+  +w-768()
+    text-align left
+  h1
+    font-size 1.75rem
+    font-weight bold
+  h6
+    font-size .9rem
+
+  &-content
+    background-image url(../img/header-kids.png)
+    background-size auto 160px
+    background-repeat no-repeat
+    background-position 55% 108%
+    
+    a
+      color dark_blue
+
+    +w-768()
+      background-position 100% 115%
+    +w-992()
+      background-position 100% 150%
+    +w-1200()
+      background-position 55% 25px
+
+    &-row
+      align-items center
+      min-height 168px
+      padding-top 2rem
+
+      +w-768()
+        padding-top 1rem
+
+      +w-1200()
+        padding-top 0
+
+    &-contacts
+      &-list
+        list-style none
+        margin-left 0
+        margin-bottom 8rem
+        padding 0
+        +w-768()
+          margin-bottom 1rem
+        +w-1200()
+          margin-bottom 0
+
+        li
+          line-height 2rem
+        .material-icons
+          font-size 1.25rem
+          vertical-align sub
+// MENU
+// Change dropdown menu to hover effect instead of click
+//.dropdown:hover>.dropdown-menu
+// display block
+.navbar-dark
+  background-color main_green
+
+  .nav-link
+    color #fff !important
+
+    &:hover
+      text-decoration underline
+    &:active,
+    &:focus
+      outline none !important
+
+.nav-item
+  span.dropdown-toggle
+    position absolute
+    top 0
+    right 0
+    height 2.5rem
+    width 4rem
+    cursor pointer
+    text-align center
+  
+    &::after
+      margin-top -1px
+      font-size 1.5rem
+      color rgba(#fff,.5)
+      content '+'
+      border none
+      width 100%
+      text-align center
+      
+    +w-1200()
+      display none
+  
+  .hidden
+    display none
+    
+  &.show
+    .dropdown-toggle::after
+      content '-'
+
+a.dropdown-item
+  white-space normal
+  &:hover,
+  &:actve,
+  &:focus,
+  &.active
+    color #fff !important
+    background-color main_green !important
+
+  +w-1200()
+    white-space nowrap
+    
+.dropdown-menu
+  a:hover,
+  a:active,
+  a:focus,
+  a.active
+    color #fff !important
+    background-color main_green !important
+
+.navbar-toggler
+  &:active,
+  &:focus,
+  &:active
+    outline none !important
+
+// Breadcrumb
+  .nav-breadcrumb
+    background-color mid_gray
+    a
+      color main_green
+
+// CUSTOMIZE THE CAROUSEL
+// Carousel base class
+.carousel
+  margin-bottom 4rem
+  &-shadow
+    background-color rgba(dark_blue,.4)
+    position absolute
+    width 100%
+    height 100%
+
+// Since positioning the image, we need to help out the caption
+.carousel-caption
+  bottom 2rem
+  z-index 10
+
+// Declare heights because of positioning of img element
+.carousel-item
+  height 32rem
+  max-height 32rem
+  background-color #fff
+  background-repeat no-repeat
+  background-position center
+  background-size cover
+
+.carousel-indicators
+  li
+    width 20px
+    height 20px
+    box-sizing border-box
+    background none
+    border 2px solid rgba(255,255,255,.40)
+    border-radius(20px,20px,20px,20px)
+    .active
+      background #fff
+
+.carousel-control-prev-icon
+  background-position 2px center
+
+.carousel-control-next-icon
+  background-position 5px center
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon
+  color rgba(#fff,.40)
+  opacity 1
+  height 40px
+  width 40px
+  background-size 32px 24px
+.carousel-control-prev,
+.carousel-control-next
+  &:hover
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon
+      border 3px solid main_orange
+      border-radius(50px)
+      box-sizing content-box
+      opacity 1
+
+      transition border .15s ease-in-out,opacity .15s ease-in-out,border-color .15s ease-in-out
+
+// MAIN CONTENT
+.intro-image
+  margin 40px auto
+  display block
+  max-width 300px
+
+  +w-768()
+    float right
+    max-width 260px
+    margin 0 0 100px 20px
+  +w-992()
+    max-width 400px
+
+// Main info block
+.main-info
+  background-color light_gray
+  background-image url(../img/fence-top.png), url(../img/fence-bot.png), url(../img/kids-bg-tile-200.png)
+  background-position top left, bottom left, top left
+  background-repeat repeat-x, repeat-x, repeat
+
+  > .container
+    padding-top 40px
+    padding-bottom 40px
+
+  &-schedule
+    background-color #fff
+    background-image url(../img/work-time-bg.png)
+    background-position 130% 130%
+    background-repeat no-repeat
+    padding 20px 20px 10px
+    boxShadow(0,0,15px,0,rgba(#000,.10))
+
+.notification-block
+  padding-top 40px
+// Center align the text within the three columns below the carousel
+.marketing .col-lg-4
+  margin-bottom 1.5rem
+  text-align center
+
+.marketing h2
+  font-weight 400
+
+.marketing .col-lg-4 p
+  margin-right .75rem
+  margin-left .75rem
+
+.location
+  &-descr
+    text-align center
+    padding 1.5rem
+    margin-top 3rem
+    margin-bottom -3rem
+    position relative
+    z-index 2501 !important
+    +w-992()
+      max-width 70%
+    +w-1400()
+      max-width 60%
+
+  &-ymap
+    height 500px
+
+// LATEST NEWS (MAIN PAGE)
+.latest-news
+  padding-top 3rem
+  &-nav
+    display block
+    margin-top 3rem
+    margin-bottom 1rem
+    border-bottom none !important
+
+    +w-768()
+      display flex
+      flex-direction row
+      flex-wrap nowrap
+      justify-content space-evenly
+
+      .nav-item
+        width 25%
+
+    .nav-item
+      text-align center
+      margin-bottom 0
+
+      .nav-link
+        color gray_blue
+        border none
+        border-radius 0
+
+        &.active
+          color #fff !important
+          background-color main_orange !important
+
+// news cards styles
+.card
+  border-radius(5px)
+  &-body
+    &-image
+      background-size cover
+      padding 0
+      border-radius(5px)
+
+.date-stamp
+  color #fff !important
+
+.news-card
+  margin-bottom 2rem
+  &-darkenbg
+    border-radius(5px)
+    background-color rgba(40,25,15,.5)
+    padding 1.25rem
+
+  a
+    color main_orange
+    font-size 14px
+  .card-body
+    .card-title
+      overflow hidden
+      height 100px
+
+// EXTERNAL LINKS
+.external-links
+  padding 2em 0
+  background-color light_gray
+
+  .owl-dots
+    visibility hidden
+    height 0
+    display none
+
+  .owl-nav
+    text-align center
+    font-size 4rem
+    line-height 4rem
+    color main_orange
+    padding 0
+
+    .owl-prev
+      left 0
+      +w-1100()
+        left -50px
+    .owl-next
+      right 0
+      +w-1100()
+        right -50px
+
+    .owl-prev,
+    .owl-next
+      background-color light_gray !important
+      position absolute
+      top -14px
+      width 40px
+
+      &:hover,
+      &:active,
+      &:focus
+        outline none
+        border none
+
+  .owl-carousel-img
+    display none
+    height 50px
+    width auto !important
+
+// FOOTER
+.site-footer
+  background-color gray_blue
+  padding-top 1.5rem
+  a
+    color #a0aaae
+
+  &-copy
+    background-color #33373a
+    color #787e80
+    margin-top 1rem
+    padding 1rem 0 0.01rem
+    font-size 0.75rem
+
+.footer-menu-list
+  padding 0
+  margin-top 1rem
+
+// Inner page styles
+.inner-page
+  margin-bottom 2rem
+
+  .gallery-img
+    padding 2px
+    margin-bottom 0.25rem
+    border 1px solid light_gray
+    display inline-block
+    
+  &-post
+    margin-top 1rem
+    
+    img
+      max-width 100%
+      height auto
+    
+.post-preview
+  overflow hidden
+  padding-left 12.5rem
+  background-image url(../img/kids-playing.png)
+  background-repeat no-repeat
+  background-size 180px auto
+  background-position 1rem
+      
+  &-img
+    height auto
+    max-width 200px
+    position absolute
+    top 0
+    left 0
+
+.sidenav
+  margin-bottom 2rem
+
+  .card-title
+    padding 0.7rem 1.25rem 0 1.25rem
+    font-weight bold
+  .list-group
+    &-list-item
+      list-style none
+    &-item
+      color main_green
+      &:hover
+        text-decoration underline
+  
+  &-hotnews
+    display none
+    +w-992()
+      display block     
+        
+.post-content
+  .page_controls
+    margin .5rem 0
+    display -ms-flexbox
+    display flex
+    padding-left 0
+    border-radius .25rem
+    width 100%
+    
+    .page-item a,
+    .page_link a,
+    .page_last a,
+    .page_first a,
+    .page_prev a,
+    .page_next a,
+    .page_current
+        padding 0.25rem
+        cursor pointer
+        position relative
+        display block
+        padding .5rem .75rem
+        margin-left -1px
+        line-height 1.25
+        color main_blue
+        background-color #fff
+        border 1px solid #dee2e6
+        
+    .page-item,
+    .page_link,
+    .page_last,
+    .page_first,
+    .page_prev,
+    .page_next
+      a:hover
+        text-decoration none
+      a:active,
+      a:focus
+        background-color mid_gray
+              
+    .page_current
+      background-color mid_gray
+      color dark_blue
+      
+    span:first-child a,
+    span:first-child
+      border-top-left-radius .25rem
+      border-bottom-left-radius .25rem
+      
+    span:last-child a,
+    span:last-child
+      border-top-right-radius .25rem
+      border-bottom-right-radius .25rem
+            
+.post-content-text  
+  .card-image-cover
+    display block
+    background-size cover
+    height 250px
+    border-radius(5px, 5px, 0, 0)
+    
+  .news-date
+    color gray_blue_light
+    
+.fancybox-slide--current
+  .fancybox-content
+    display block !important
+    
+.gallery-archive-albums
+    display flex
+    display -ms-flexbox
+    -ms-flex-direction row
+    flex-direction row
+    flex-wrap wrap
+
+.gallery-album
+  border none
+  width 100%
+  height 200px
+  overflow hidden
+  margin 0.25rem 0.50rem 0.25rem 0
+  +w-540()
+    width 240px
+  +w-768()
+    width 320px
+  +w-992()
+    width 220px
+  +w-1200()
+    width 260px
+  
+  &-shadow
+    background-image linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1))
+    position absolute
+    width 100%
+    height 100%
+    border-radius(0 0 5px 5px)
+    
+  .card-img-overlay
+    top auto
+    padding 1.25rem 1.25rem 0.75rem 1.25rem
+    max-height 100%
+    overflow hidden
+    
+  .date-stamp
+    font-size 0.8rem
+    color #6c757d  !important
+    
+  .card-title a
+    color main_orange
+
+// Featurettes
+.featurette-divider
+  margin 5rem 0 /* Space out the Bootstrap <hr> more */
+
+// Thin out the marketing headings
+.featurette-heading
+  font-weight 300
+  line-height 1
+  letter-spacing -.05rem
+
+// RESPONSIVE CSS
+@media (min-width 40em)
+  // Bump up size of carousel content
+  .carousel-caption p
+    margin-bottom 1.25rem
+    font-size 1.25rem
+    line-height 1.4
+
+  .featurette-heading
+    font-size 50px
+
+@media (min-width 62em)
+  .featurette-heading
+    margin-top 7rem

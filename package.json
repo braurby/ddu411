@@ -1,0 +1,27 @@
+{
+  "name": "ddu411",
+  "version": "0.0.1",
+  "description": "ddu441 Website",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andreyk",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "glob": "^7.1.2",
+    "grunt": "^1.0.3",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-stylus": "^1.2.0",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-debug": "^4.0.0",
+    "gulp-stylus": "^2.7.0",
+    "npm": "^6.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Iternity/ddu411.git"
+  }
+}
