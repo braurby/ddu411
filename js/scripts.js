@@ -64,7 +64,7 @@ const cookieBox = document.querySelector(".cookie-popup"),
 
 const executeCodes = () => {
     //if cookie contains codinglab it will be returned and below of this code will not run
-    if (document.cookie.includes("codinglab")) return;
+    if (document.cookie.includes("ddu411")) return;
     cookieBox.classList.add("show");
 
     buttons.forEach((button) => {
